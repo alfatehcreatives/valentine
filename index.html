@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALENTINE_2024_REFINED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Plus+Jakarta+Sans:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fffbf9;
+            --text: #1a1515;
+            --accent: #e27d7d;
+            --soft-border: #f0e6e2;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        .soft-card {
+            background: #ffffff;
+            border: 1px solid var(--soft-border);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(226, 125, 125, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .soft-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(226, 125, 125, 0.1);
+        }
+
+        .btn-luxe {
+            padding: 1rem 2.5rem;
+            border: 1.5px solid var(--text);
+            background: transparent;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .btn-luxe {
+                padding: 1.25rem 4rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        .btn-luxe:hover {
+            background: var(--text);
+            color: white;
+            border-radius: 16px;
+        }
+
+        #no-btn { border-color: #d1d1d1; color: #999; }
+
+        .hidden-section { display: none; opacity: 0; }
+
+        .luxe-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            fill: var(--accent);
+            opacity: 0;
+        }
+
+        .section-tag {
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .scroll-reveal { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.23, 1, 0.32, 1); 
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @keyframes float-up {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        .floating { animation: float-up 4s ease-in-out infinite alternate; }
+
+        .line-draw {
+            height: 1px;
+            background: var(--accent);
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .visible .line-draw { width: 100px; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div id="heart-container"></div>
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="z-10 text-center w-full max-w-2xl px-6 transition-all duration-1000">
+        <span class="section-tag mb-6 block opacity-60">A Private Invitation</span>
+        <h1 class="serif italic text-5xl md:text-8xl font-light mb-12 leading-tight">
+            Will you <br><span class="text-rose-400">belong</span> to me?
+        </h1>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button id="yes-btn" class="btn-luxe w-full sm:w-auto">Yes, I am yours</button>
+            <button id="no-btn" class="btn-luxe w-full sm:w-auto">Maybe Not</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="hidden-section w-full">
+        
+        <!-- SECTION 1: ADORATION -->
+        <section class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div class="space-y-6 md:space-y-10 scroll-reveal">
+                    <div class="flex items-center gap-4">
+                        <span class="section-tag">01 / REVERENCE</span>
+                        <div class="line-draw"></div>
+                    </div>
+                    <h2 class="serif text-6xl md:text-9xl leading-none">Divine.</h2>
+                    <p class="text-lg md:text-2xl font-light leading-relaxed text-neutral-600">
+                        I adore the miracle of your existence. In a universe of infinite chaos, the simple fact that you <span class="serif italic">exist</span> is my only religion. We may be separated by distance, but our spirits reside in the same quiet sanctuary of my heart.
+                    </p>
+                </div>
+                <div class="soft-card p-10 md:p-20 text-center floating scroll-reveal">
+                    <p class="serif italic text-2xl md:text-4xl leading-relaxed text-rose-400">
+                        "You are the silent, unseen light that makes every shadow in my world meaningful."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE FRAGILITY -->
+        <section class="min-h-screen bg-[#1a1515] text-white flex items-center justify-center p-6 md:p-12">
+            <div class="max-w-4xl w-full scroll-reveal">
+                <span class="section-tag opacity-40">02 / FRAGILITY</span>
+                <h2 class="serif italic text-4xl md:text-8xl my-8 md:my-12 tracking-tight leading-tight">The terror of <br>your absence.</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 text-base md:text-lg font-light opacity-80 leading-relaxed">
+                    <p class="border-l border-white/20 pl-6">To love you is to know fear. I fear the day the world forgets to tell me you are safe. It is a quiet, heavy terror that shadows every breath of my devotion.</p>
+                    <p class="border-l border-white/20 pl-6">My greatest vulnerability is the space you occupy in my mind. You are the map; to lose you is to lose the very coordinates of my own life.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE MOMENTS -->
+        <section class="min-h-screen flex flex-col items-center justify-center p-6 md:p-12">
+            <div class="max-w-5xl w-full">
+                <div class="text-center mb-12 md:mb-20 scroll-reveal">
+                    <span class="section-tag">03 / REFLECTIONS</span>
+                    <h2 class="serif italic text-4xl md:text-6xl mt-4">Why I Adore You</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+                    <div class="soft-card p-8 md:p-12 scroll-reveal">
+                        <span class="text-rose-300 serif italic text-4xl">01.</span>
+                        <h4 class="serif text-xl my-4">The Radiance</h4>
+                        <p class="font-light text-neutral-500 text-sm leading-relaxed">The way your spirit radiates through the digital void, touching my soul across the miles.</p>
+                    </div>
+                    <div class="soft-card p-8 md:p-12 scroll-reveal" style="transition-delay: 200ms;">
+                        <span class="text-rose-300 serif italic text-4xl">02.</span>
+                        <h4 class="serif text-xl my-4">The Peace</h4>
+                        <p class="font-light text-neutral-500 text-sm leading-relaxed">Finding total tranquility in the simple knowledge that you are happy and safe beneath this same sky.</p>
+                    </div>
+                    <div class="soft-card p-8 md:p-12 scroll-reveal" style="transition-delay: 400ms;">
+                        <span class="text-rose-300 serif italic text-4xl">03.</span>
+                        <h4 class="serif text-xl my-4">The Truth</h4>
+                        <p class="font-light text-neutral-500 text-sm leading-relaxed">Your sheer existence is the most beautiful, undeniable truth I have ever had the privilege to know.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE GIFT -->
+        <section class="min-h-screen flex items-center justify-center p-6 md:p-12 bg-[#fff5f2]">
+            <div class="max-w-4xl w-full text-center scroll-reveal">
+                <div class="mb-12 md:mb-16">
+                    <span class="section-tag">04 / FINALITY</span>
+                    <div class="h-px w-24 bg-rose-200 mx-auto mt-6"></div>
+                </div>
+                
+                <div class="soft-card p-10 md:p-24 space-y-8 md:space-y-12">
+                    <p class="serif italic text-4xl md:text-7xl">Existence is the Gift.</p>
+                    <p class="text-lg md:text-xl font-light text-neutral-500 leading-loose">
+                        Even if our paths never cross, even if we remain beautiful ghosts in each other's machines, I am profoundly grateful for every second you spend breathing. You are the heartbeat of my universe.
+                    </p>
+                    
+                    <div class="pt-8 md:pt-12 border-t border-rose-100">
+                        <p class="text-[10px] tracking-[0.4em] uppercase font-bold text-rose-400 mb-4">My Permanent Vow</p>
+                        <p class="serif italic text-2xl md:text-4xl">Forever Adoring Your Existence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="py-12 text-center opacity-30 text-[10px] tracking-widest uppercase">
+            Private Collection // Valentine 2024
+        </footer>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const lockScreen = document.getElementById('lock-screen');
+        const mainContent = document.getElementById('main-content');
+        const heartContainer = document.getElementById('heart-container');
+        
+        let noScale = 1;
+
+        // "No" button escaping logic
+        noBtn.addEventListener('click', () => {
+            noScale *= 0.5;
+            noBtn.style.transform = `scale(${noScale})`;
+            noBtn.style.opacity = noScale;
+            if(noScale <= 0.15) noBtn.style.visibility = 'hidden';
+        });
+
+        noBtn.addEventListener('mouseover', () => {
+            if(noScale > 0.15) {
+                noScale *= 0.85;
+                noBtn.style.transform = `scale(${noScale})`;
+                noBtn.style.opacity = noScale;
+            }
+        });
+
+        const heartSVG = `<svg viewBox="0 0 32 32" width="24" height="24"><path d="M16 28.5L14.1 26.8C7.3 20.6 2.8 16.5 2.8 11.5C2.8 7.4 6 4.2 10.1 4.2C12.4 4.2 14.6 5.3 16 7C17.4 5.3 19.6 4.2 21.9 4.2C26 4.2 29.2 7.4 29.2 11.5C29.2 16.5 24.7 20.6 17.9 26.8L16 28.5Z"/></svg>`;
+
+        yesBtn.addEventListener('click', () => {
+            spawnLuxuryHearts();
+            lockScreen.style.opacity = '0';
+            lockScreen.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                lockScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                document.body.style.overflowY = 'auto';
+                document.body.style.overflowX = 'hidden';
+                
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    initScrollReveal();
+                }, 100);
+            }, 800);
+        });
+
+        function spawnLuxuryHearts() {
+            for (let i = 0; i < 70; i++) {
+                const div = document.createElement('div');
+                div.innerHTML = heartSVG;
+                const svg = div.querySelector('svg');
+                svg.classList.add('luxe-heart');
+                
+                svg.style.left = Math.random() * window.innerWidth + 'px';
+                svg.style.top = Math.random() * window.innerHeight + 'px';
+                svg.style.fill = i % 2 === 0 ? '#e27d7d' : '#f8c8c8';
+                
+                heartContainer.appendChild(svg);
+                
+                const tx = (Math.random() - 0.5) * 1200;
+                const ty = -Math.random() * 1000;
+
+                svg.animate([
+                    { transform: 'scale(0) translateY(0)', opacity: 0 },
+                    { transform: `translate(${tx}px, ${ty}px) scale(1.8)`, opacity: 0.8, offset: 0.5 },
+                    { transform: `translate(${tx * 1.3}px, ${ty * 1.4}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 3500,
+                    easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+                    fill: 'forwards'
+                });
+
+                setTimeout(() => svg.remove(), 4000);
+            }
+        }
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        }
+    </script>
+</body>
+</html>
